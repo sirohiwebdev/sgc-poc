@@ -4,7 +4,6 @@
       "isAction": true,
       "isRoot": false,
       "properties": { "client": "StorageManagementClient" },
-      "createdAt": "2021-05-12T14:10:24.413Z",
       "cloudProvider": "AZURE",
       "inputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -19,101 +18,11 @@
           "callback"
         ],
         "properties": {
-          "options": {
-            "description": "Optional Parameters.",
-            "additionalProperties": false,
-            "type": "object",
-            "properties": {
-              "metadata": {
-                "type": "object",
-                "description": "A name-value pair that represents queue metadata.",
-                "additionalProperties": { "type": "string" }
-              },
-              "onUploadProgress": {
-                "type": "object",
-                "description": "Callback which fires upon upload progress.",
-                "additionalProperties": false
-              },
-              "onDownloadProgress": {
-                "type": "object",
-                "description": "Callback which fires upon download progress.",
-                "additionalProperties": false
-              },
-              "abortSignal": {
-                "description": "The signal which can be used to abort requests.",
-                "additionalProperties": false,
-                "type": "object",
-                "properties": {
-                  "dispatchEvent": {
-                    "type": "object",
-                    "additionalProperties": false
-                  },
-                  "removeEventListener": {
-                    "type": "object",
-                    "additionalProperties": false
-                  },
-                  "onabort": {
-                    "type": "object",
-                    "additionalProperties": false
-                  },
-                  "aborted": { "type": "boolean" },
-                  "addEventListener": {
-                    "type": "object",
-                    "additionalProperties": false
-                  }
-                },
-                "required": [
-                  "aborted",
-                  "addEventListener",
-                  "dispatchEvent",
-                  "onabort",
-                  "removeEventListener"
-                ]
-              },
-              "customHeaders": {
-                "type": "object",
-                "additionalProperties": { "type": "string" }
-              },
-              "timeout": {
-                "type": "number",
-                "description": "The number of milliseconds a request can take before automatically being terminated."
-              }
-            }
-          },
           "resourceGroupName": { "type": "string" },
           "queueName": { "type": "string" },
           "accountName": { "type": "string" }
         },
-        "required": ["resourceGroupName", "accountName", "queueName", "options"]
-      },
-      "outputSchema": {
-        "description": "An interface representing StorageQueue.",
-        "additionalProperties": false,
-        "type": "object",
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "The name of the resource\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-          },
-          "metadata": {
-            "type": "object",
-            "description": "A name-value pair that represents queue metadata.",
-            "additionalProperties": { "type": "string" }
-          },
-          "approximateMessageCount": {
-            "type": "number",
-            "description": "Integer indicating an approximate number of messages in the queue. This number is not lower\nthan the actual number of messages in the queue, but could be higher.\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-          },
-          "id": {
-            "type": "string",
-            "description": "Fully qualified resource ID for the resource. Ex -\n/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-          },
-          "type": {
-            "type": "string",
-            "description": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or\n\"Microsoft.Storage/storageAccounts\"\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-          }
-        }
+        "required": ["resourceGroupName", "accountName", "queueName"]
       },
       "method": "create",
       "service": "storage",
@@ -126,24 +35,13 @@
       },
       "rowType": "API",
       "params": {
-        "options": {
-          "abortSignal": { "aborted": "required" },
-          "timeout": "<optional>"
-        },
         "resourceGroupName": "required",
         "queueName": "required",
         "accountName": "required"
       },
-      "updatedAt": "2021-05-12T14:10:49.772Z",
       "_id": "fb6b3f43",
       "input": {
-        "required": [
-          "resourceGroupName",
-          "accountName",
-          "queueName",
-          "options",
-          "callback"
-        ],
+        "required": ["callback"],
         "optional": []
       },
       "operationType": "CREATE",
@@ -151,15 +49,6 @@
       "addonCount": 0,
       "relationCount": 6,
       "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
         {
           "id": "1230",
           "cloudProvider": "AWS",
@@ -185,7 +74,6 @@
       "isAction": true,
       "isRoot": false,
       "properties": { "client": "ComputeManagementClient" },
-      "createdAt": "2021-05-12T14:10:07.899Z",
       "cloudProvider": "AZURE",
       "inputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -216,7 +104,6 @@
         },
         "required": ["resourceGroupName", "vmScaleSetName", "parameters"]
       },
-      "outputSchema": {},
       "method": "convertToSinglePlacementGroup",
       "service": "compute",
       "displayName": "Virtual Machine  Scale  Sets ",
@@ -229,7 +116,6 @@
         "parameters": { "activePlacementGroupId": "<optional>" },
         "resourceGroupName": "required"
       },
-      "updatedAt": "2021-05-12T14:10:32.398Z",
       "_id": "9008ccb9",
       "input": {
         "required": [
@@ -256,15 +142,6 @@
           "diff": "+204 -30"
         },
         {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
-        {
           "id": "1231",
           "cloudProvider": "AWS",
           "method": "describeIns",
@@ -280,81 +157,17 @@
       "isAction": true,
       "isRoot": false,
       "properties": { "client": "StorSimple8000SeriesManagementClient" },
-      "createdAt": "2021-05-12T14:10:25.597Z",
       "cloudProvider": "AZURE",
       "inputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "description": "Parameters.",
         "additionalProperties": false,
         "type": "object",
-        "argumentOrder": [
-          "deviceName",
-          "volumeContainerName",
-          "volumeName",
-          "parameters",
-          "resourceGroupName",
-          "managerName"
-        ],
+
         "properties": {
           "resourceGroupName": { "type": "string" },
           "managerName": { "type": "string" },
           "deviceName": { "type": "string" },
-          "parameters": {
-            "additionalProperties": false,
-            "type": "object",
-            "properties": {
-              "volumeType": {
-                "type": "string",
-                "description": "Defines values for VolumeType.\nPossible values include: 'Tiered', 'Archival', 'LocallyPinned'",
-                "enum": ["Archival", "LocallyPinned", "Tiered"]
-              },
-              "volumeContainerId": { "type": "string" },
-              "operationStatus": {
-                "type": "string",
-                "description": "Defines values for OperationStatus.\nPossible values include: 'None', 'Updating', 'Deleting', 'Restoring'",
-                "enum": ["Deleting", "None", "Restoring", "Updating"]
-              },
-              "sizeInBytes": { "type": "number" },
-              "kind": {
-                "type": "string",
-                "description": "Defines values for Kind.\nPossible values include: 'Series8000'",
-                "enum": ["Series8000"]
-              },
-              "type": { "type": "string" },
-              "accessControlRecordIds": {
-                "type": "array",
-                "items": { "type": "string" }
-              },
-              "backupStatus": {
-                "type": "string",
-                "description": "Defines values for BackupStatus.\nPossible values include: 'Enabled', 'Disabled'",
-                "enum": ["Disabled", "Enabled"]
-              },
-              "monitoringStatus": {
-                "type": "string",
-                "description": "Defines values for MonitoringStatus.\nPossible values include: 'Enabled', 'Disabled'",
-                "enum": ["Disabled", "Enabled"]
-              },
-              "name": { "type": "string" },
-              "volumeStatus": {
-                "type": "string",
-                "description": "Defines values for VolumeStatus.\nPossible values include: 'Online', 'Offline'",
-                "enum": ["Offline", "Online"]
-              },
-              "id": { "type": "string" },
-              "backupPolicyIds": {
-                "type": "array",
-                "items": { "type": "string" }
-              }
-            },
-            "required": [
-              "accessControlRecordIds",
-              "monitoringStatus",
-              "sizeInBytes",
-              "volumeStatus",
-              "volumeType"
-            ]
-          },
           "volumeContainerName": { "type": "string" },
           "volumeName": { "type": "string" }
         },
@@ -362,7 +175,6 @@
           "deviceName",
           "volumeContainerName",
           "volumeName",
-          "parameters",
           "resourceGroupName",
           "managerName"
         ]
@@ -379,35 +191,12 @@
         "resourceGroupName": "required",
         "managerName": "required",
         "deviceName": "required",
-        "parameters": {
-          "volumeType": "required",
-          "volumeContainerId": "<optional>",
-          "operationStatus": "<optional>",
-          "sizeInBytes": "required",
-          "kind": "<optional>",
-          "type": "<optional>",
-          "accessControlRecordIds": ["<optional>"],
-          "backupStatus": "<optional>",
-          "monitoringStatus": "required",
-          "name": "<optional>",
-          "volumeStatus": "required",
-          "id": "<optional>",
-          "backupPolicyIds": ["<optional>"]
-        },
         "volumeContainerName": "required",
         "volumeName": "required"
       },
-      "updatedAt": "2021-05-12T14:10:51.040Z",
       "_id": "4629122f",
       "input": {
-        "required": [
-          "deviceName",
-          "volumeContainerName",
-          "volumeName",
-          "parameters",
-          "resourceGroupName",
-          "managerName"
-        ],
+        "required": ["deviceName", "resourceGroupName", "managerName"],
         "optional": []
       },
       "operationType": "MODIFY",
@@ -415,24 +204,6 @@
       "addonCount": 5,
       "relationCount": 6,
       "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
         {
           "id": "1231",
           "cloudProvider": "AWS",
@@ -450,10 +221,6 @@
       "aliases": {},
       "properties": {},
       "cloudProvider": "AWS",
-      "outputSchema": {
-        "type": "structure",
-        "members": { "datasetImportJobArn": { "type": "string" } }
-      },
       "method": "createDatasetImportJob",
       "displayName": "Create Dataset Import Job",
       "active": true,
@@ -472,7 +239,6 @@
       "areValidParams": true,
       "isAction": true,
       "suppressErrors": [],
-      "createdAt": "2021-07-29T07:54:21.402Z",
       "inputSchema": {
         "type": "structure",
         "required": ["jobName", "datasetArn", "dataSource", "roleArn"],
@@ -490,31 +256,12 @@
       "service": "Personalize",
       "resourceType": "PERSONALIZE_DATASET_IMPORT_JOB",
       "output": { "required": [], "optional": ["datasetImportJobArn"] },
-      "updatedAt": "2021-07-29T07:55:05.740Z",
       "normalisations": [],
       "operationType": "CREATE",
       "displayService": "Personalize",
       "addonCount": 3,
       "relationCount": 2,
       "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
         {
           "id": "1231",
           "cloudProvider": "AWS",
@@ -529,9 +276,7 @@
     },
     {
       "isAction": false,
-      "isRoot": false,
       "properties": { "client": "ManagementLockClient" },
-      "createdAt": "2021-05-12T14:06:19.678Z",
       "cloudProvider": "AZURE",
       "inputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -542,74 +287,17 @@
         "properties": { "nextPageLink": { "type": "string" } },
         "required": ["nextPageLink"]
       },
-      "outputSchema": {
-        "additionalProperties": false,
-        "type": "array",
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "items": {
-          "description": "The lock information.",
-          "additionalProperties": false,
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string",
-              "description": "The name of the lock.\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-            },
-            "owners": {
-              "type": "array",
-              "description": "The owners of the lock.",
-              "items": {
-                "description": "Lock owner properties.",
-                "additionalProperties": false,
-                "type": "object",
-                "properties": {
-                  "applicationId": {
-                    "type": "string",
-                    "description": "The application ID of the lock owner."
-                  }
-                }
-              }
-            },
-            "notes": {
-              "type": "string",
-              "description": "Notes about the lock. Maximum of 512 characters."
-            },
-            "id": {
-              "type": "string",
-              "description": "The resource ID of the lock.\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-            },
-            "type": {
-              "type": "string",
-              "description": "The resource type of the lock - Microsoft.Authorization/locks.\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-            },
-            "level": {
-              "type": "string",
-              "description": "The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete\nmeans authorized users are able to read and modify the resources, but not delete. ReadOnly\nmeans authorized users can only read from a resource, but they can't modify or delete it.\nPossible values include: 'NotSpecified', 'CanNotDelete', 'ReadOnly'",
-              "enum": ["CanNotDelete", "NotSpecified", "ReadOnly"]
-            }
-          },
-          "required": ["level"]
-        }
-      },
       "method": "listAtResourceLevelNext",
       "service": "locks",
       "displayName": "Management Locks ",
       "active": false,
       "resourceType": "managementLocks",
       "output": {
-        "required": [
-          "level",
-          "notes",
-          "owners.applicationId",
-          "id",
-          "type",
-          "name"
-        ],
+        "required": ["level", "notes"],
         "optional": []
       },
       "rowType": "API",
       "params": { "nextPageLink": "required" },
-      "updatedAt": "2021-05-12T14:06:45.377Z",
       "_id": "e1aa8e8f",
       "input": {
         "required": ["nextPageLink", "options", "callback"],
@@ -619,840 +307,8 @@
       "displayService": "locks",
       "addonCount": 7,
       "relationCount": 19,
-      "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
-        {
-          "id": "1231",
-          "cloudProvider": "AWS",
-          "method": "describeIns",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "RELATION",
-          "diff": "+3 -10"
-        }
-      ],
+      "addonsAndRelations": [],
       "diffCount": "+363 -108"
-    },
-    {
-      "isAction": true,
-      "isRoot": false,
-      "properties": { "package": "@google-cloud/iot" },
-      "createdAt": "2021-08-18T07:24:00.409Z",
-      "cloudProvider": "GCP",
-      "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "description": "Parameters.",
-        "additionalProperties": false,
-        "type": "object",
-        "argumentOrder": ["request"],
-        "definitions": {},
-        "properties": {
-          "request": {
-            "description": "Properties of a TestIamPermissionsRequest.",
-            "additionalProperties": false,
-            "$schema": "http://json-schema.org/draft-07/schema#",
-            "type": "object",
-            "properties": {
-              "resource": {
-                "type": ["string"],
-                "description": "TestIamPermissionsRequest resource"
-              },
-              "permissions": {
-                "anyOf": [{ "type": "array", "items": { "type": "string" } }],
-                "description": "TestIamPermissionsRequest permissions"
-              }
-            }
-          }
-        },
-        "required": []
-      },
-      "outputSchema": {
-        "description": "Properties of a TestIamPermissionsResponse.",
-        "additionalProperties": false,
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "type": "object",
-        "definitions": {},
-        "properties": {
-          "permissions": {
-            "anyOf": [{ "type": "array", "items": { "type": "string" } }],
-            "description": "TestIamPermissionsResponse permissions"
-          }
-        }
-      },
-      "method": "testIamPermissions",
-      "service": "iot",
-      "displayName": "Test Iam Permission",
-      "active": true,
-      "resourceType": "DeviceManagerClient",
-      "output": { "required": ["permissions"], "optional": [] },
-      "rowType": "API",
-      "params": {
-        "request": { "resource": "<optional>", "permissions": ["<optional>"] }
-      },
-      "updatedAt": "2021-08-18T07:24:27.464Z",
-      "_id": "d8e4c309",
-      "displayResourceType": "Device Managers",
-      "input": { "required": [], "optional": ["request"] },
-      "operationType": "MODIFY",
-      "displayService": "Internet of Things (IoT) Core",
-      "addonCount": 7,
-      "relationCount": 5,
-      "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
-        {
-          "id": "1231",
-          "cloudProvider": "AWS",
-          "method": "describeIns",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "RELATION",
-          "diff": "+3 -10"
-        }
-      ],
-      "diffCount": "+108 -169"
-    },
-    {
-      "isAction": true,
-      "isRoot": false,
-      "properties": { "client": "DataFactoryManagementClient" },
-      "createdAt": "2021-05-12T14:10:10.603Z",
-      "cloudProvider": "AZURE",
-      "inputSchema": {
-        "argumentOrder": [
-          "resourceGroupName",
-          "factoryName",
-          "filterParameters",
-          "options",
-          "callback"
-        ]
-      },
-      "outputSchema": {},
-      "method": "queryByFactory",
-      "service": "datafactory",
-      "displayName": "Triggers",
-      "active": true,
-      "resourceType": "triggers",
-      "output": { "required": [], "optional": [] },
-      "rowType": "API",
-      "params": {},
-      "updatedAt": "2021-05-12T14:10:35.181Z",
-      "_id": "d34469ac",
-      "input": {
-        "required": [
-          "resourceGroupName",
-          "factoryName",
-          "filterParameters",
-          "options",
-          "callback"
-        ],
-        "optional": []
-      },
-      "operationType": "MODIFY",
-      "displayService": "datafactory",
-      "addonCount": 19,
-      "relationCount": 9,
-      "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
-        {
-          "id": "1231",
-          "cloudProvider": "AWS",
-          "method": "describeIns",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "RELATION",
-          "diff": "+3 -10"
-        }
-      ],
-      "diffCount": "+330 -120"
-    },
-    {
-      "relations": [],
-      "aliases": {},
-      "isDependent": true,
-      "properties": {},
-      "cloudProvider": "AWS",
-      "outputSchema": {
-        "type": "structure",
-        "members": {
-          "resources": {
-            "type": "list",
-            "member": {
-              "type": "structure",
-              "members": {
-                "resourceGroupArn": { "type": "string" },
-                "creationTime": { "type": "timestamp" },
-                "resourceShareArn": { "type": "string" },
-                "lastUpdatedTime": { "type": "timestamp" },
-                "arn": { "type": "string" },
-                "type": { "type": "string" },
-                "statusMessage": { "type": "string" },
-                "status": { "type": "string" }
-              }
-            }
-          },
-          "nextToken": { "type": "string" }
-        }
-      },
-      "method": "listPendingInvitationResources",
-      "displayName": "Pending Invitation Resources",
-      "active": true,
-      "rowType": "API",
-      "params": { "resourceShareInvitationArn": "required" },
-      "_id": "6f9aabc8",
-      "input": { "required": ["resourceShareInvitationArn"], "optional": [] },
-      "areValidParams": true,
-      "isAction": false,
-      "primaryKeyField": "resources.resourceShareArn",
-      "suppressErrors": [],
-      "createdAt": "2021-07-29T07:54:22.794Z",
-      "inputSchema": {
-        "type": "structure",
-        "required": ["resourceShareInvitationArn"],
-        "members": {
-          "nextToken": { "type": "string" },
-          "maxResults": { "type": "integer" },
-          "resourceShareInvitationArn": { "type": "string" }
-        }
-      },
-      "historyKeys": [],
-      "service": "RAM",
-      "resourceType": "RAM_PENDING_INVITATION_RESOURCES",
-      "output": {
-        "required": [],
-        "optional": [
-          "resources",
-          "resources.arn",
-          "resources.type",
-          "resources.resourceShareArn",
-          "resources.resourceGroupArn",
-          "resources.status",
-          "resources.statusMessage",
-          "resources.creationTime",
-          "resources.lastUpdatedTime"
-        ]
-      },
-      "updatedAt": "2021-07-29T07:55:07.195Z",
-      "normalisations": [],
-      "operationType": "DISCOVER",
-      "displayService": "RAM",
-      "addonCount": 16,
-      "relationCount": 4,
-      "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
-        {
-          "id": "1231",
-          "cloudProvider": "AWS",
-          "method": "describeIns",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "RELATION",
-          "diff": "+3 -10"
-        }
-      ],
-      "diffCount": "+160 -77"
-    },
-    {
-      "linkedMethod": "describeSubnets",
-      "relations": [
-        {
-          "rKey": "SubnetId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:EC2:Subnets:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "SubnetId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:Glue:DevEndpoints:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "VpcId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:DMS:ReplicationSubnetGroups:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "VpcId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:EC2:VpcClassicLink:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "VpcId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:EC2:VpcClassicLinkDnsSupport:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "VpcId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:EC2:Vpcs:${value}`",
-          "enabled": true,
-          "direction": "forward"
-        },
-        {
-          "rKey": "VpcId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:RDS:DBClusterSnapshots:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "VpcId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:RDS:DBSnapshots:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "VpcId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:RDS:DBSubnetGroups:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "VpcId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:RDS:OptionGroups:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "Ipv6CidrBlockAssociationSet.AssociationId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:EC2:IamInstanceProfileAssociations:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "Ipv6CidrBlockAssociationSet.AssociationId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:SSM:Association:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        },
-        {
-          "rKey": "Ipv6CidrBlockAssociationSet.AssociationId",
-          "rValueType": "inline",
-          "rKeyType": "static",
-          "rValue": "`dataforest:${user}:${region}:SSM:AssociationVersions:${value}`",
-          "enabled": false,
-          "direction": "forward"
-        }
-      ],
-      "aliases": {},
-      "isDependent": false,
-      "properties": {},
-      "cloudProvider": "AWS",
-      "outputSchema": {
-        "type": "structure",
-        "members": {
-          "NextToken": { "type": "string" },
-          "Subnets": {
-            "type": "list",
-            "member": {
-              "type": "structure",
-              "members": {
-                "MapPublicIpOnLaunch": { "type": "boolean" },
-                "AvailableIpAddressCount": { "type": "integer" },
-                "DefaultForAz": { "type": "boolean" },
-                "AvailabilityZoneId": { "type": "string" },
-                "AvailabilityZone": { "type": "string" },
-                "CidrBlock": { "type": "string" },
-                "SubnetId": { "type": "string" },
-                "AssignIpv6AddressOnCreation": { "type": "boolean" },
-                "VpcId": { "type": "string" },
-                "OwnerId": { "type": "string" },
-                "State": { "type": "string" },
-                "SubnetArn": { "type": "string" },
-                "Ipv6CidrBlockAssociationSet": {
-                  "type": "list",
-                  "member": {
-                    "type": "structure",
-                    "members": {
-                      "Ipv6CidrBlock": { "type": "string" },
-                      "AssociationId": { "type": "string" },
-                      "Ipv6CidrBlockState": {
-                        "type": "structure",
-                        "members": {
-                          "State": { "type": "string" },
-                          "StatusMessage": { "type": "string" }
-                        }
-                      }
-                    }
-                  }
-                },
-                "Tags": {
-                  "type": "list",
-                  "member": {
-                    "type": "structure",
-                    "members": {
-                      "Value": { "type": "string" },
-                      "Key": { "type": "string" }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "method": "describeLoadBalancers",
-      "relationType": "HAS",
-      "displayName": "Subnets",
-      "linkedService": "EC2",
-      "active": true,
-      "rowType": "RELATION",
-      "params": {
-        "SubnetIds": ["<optional1>", "<optional2>"],
-        "Filters": [
-          { "Values": ["<optional1>", "<optional2>"], "Name": "<optional>" }
-        ]
-      },
-      "_id": "76f5536d",
-      "input": {
-        "required": [],
-        "optional": ["Filters", "SubnetIds", "Filters.Name", "Filters.Values"]
-      },
-      "areValidParams": true,
-      "isAction": false,
-      "primaryKeyField": "Subnets.SubnetId",
-      "isRoot": true,
-      "customDef": {},
-      "suppressErrors": [],
-      "createdAt": "2021-07-29T07:54:10.457Z",
-      "inputSchema": {
-        "type": "structure",
-        "members": {
-          "DryRun": { "type": "boolean" },
-          "Filters": {
-            "type": "list",
-            "member": {
-              "type": "structure",
-              "members": {
-                "Values": { "type": "list", "member": { "type": "string" } },
-                "Name": { "type": "string" }
-              }
-            }
-          },
-          "NextToken": { "type": "string" },
-          "SubnetIds": { "type": "list", "member": { "type": "string" } },
-          "MaxResults": { "type": "integer" }
-        }
-      },
-      "historyKeys": [],
-      "service": "ELBv2",
-      "resourceType": "ELBV2_LOAD_BALANCERS",
-      "linkedResourceType": "EC2_SUBNETS",
-      "output": {
-        "required": [],
-        "optional": [
-          "Subnets",
-          "Subnets.AvailabilityZone",
-          "Subnets.AvailabilityZoneId",
-          "Subnets.AvailableIpAddressCount",
-          "Subnets.CidrBlock",
-          "Subnets.DefaultForAz",
-          "Subnets.MapPublicIpOnLaunch",
-          "Subnets.State",
-          "Subnets.SubnetId",
-          "Subnets.VpcId",
-          "Subnets.OwnerId",
-          "Subnets.AssignIpv6AddressOnCreation",
-          "Subnets.Ipv6CidrBlockAssociationSet",
-          "Subnets.Tags",
-          "Subnets.SubnetArn",
-          "Subnets.Ipv6CidrBlockAssociationSet.AssociationId",
-          "Subnets.Ipv6CidrBlockAssociationSet.Ipv6CidrBlock",
-          "Subnets.Ipv6CidrBlockAssociationSet.Ipv6CidrBlockState",
-          "Subnets.Ipv6CidrBlockAssociationSet.Ipv6CidrBlockState.State",
-          "Subnets.Ipv6CidrBlockAssociationSet.Ipv6CidrBlockState.StatusMessage",
-          "Subnets.Tags.Key",
-          "Subnets.Tags.Value"
-        ]
-      },
-      "updatedAt": "2021-07-29T07:54:52.544Z",
-      "normalisations": [],
-      "operationType": "DISCOVER",
-      "displayService": "EC2",
-      "addonCount": 17,
-      "relationCount": 19,
-      "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
-        {
-          "id": "1231",
-          "cloudProvider": "AWS",
-          "method": "describeIns",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "RELATION",
-          "diff": "+3 -10"
-        }
-      ],
-      "diffCount": "+396 -194"
-    },
-    {
-      "linkedMethod": "listByServer",
-      "isAction": false,
-      "isRoot": false,
-      "properties": {
-        "addOnConfidence": 0.9090909090909091,
-        "client": "SqlManagementClient"
-      },
-      "createdAt": "2021-08-18T10:31:51.177Z",
-      "cloudProvider": "AZURE",
-      "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "description": "Parameters.",
-        "additionalProperties": false,
-        "type": "object",
-        "argumentOrder": ["resourceGroupName", "serverName"],
-        "properties": {
-          "serverName": { "type": "string" },
-          "resourceGroupName": { "type": "string" }
-        },
-        "required": ["resourceGroupName", "serverName"]
-      },
-      "outputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "$ref": "#/definitions/ServerVulnerabilityAssessmentListResult",
-        "definitions": {
-          "ServerVulnerabilityAssessment": {
-            "description": "A server vulnerability assessment.",
-            "additionalProperties": false,
-            "type": "object",
-            "properties": {
-              "storageContainerSasKey": {
-                "type": "string",
-                "description": "A shared access signature (SAS Key) that has read and write access to the blob container specified in 'storageContainerPath' parameter. If 'storageAccountAccessKey' isn't specified, StorageContainerSasKey is required."
-              },
-              "storageAccountAccessKey": {
-                "type": "string",
-                "description": "Specifies the identifier key of the storage account for vulnerability assessment scan results. If 'StorageContainerSasKey' isn't specified, storageAccountAccessKey is required."
-              },
-              "name": {
-                "type": "string",
-                "description": "Resource name.\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-              },
-              "id": {
-                "type": "string",
-                "description": "Resource ID.\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-              },
-              "type": {
-                "type": "string",
-                "description": "Resource type.\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-              },
-              "storageContainerPath": {
-                "type": "string",
-                "description": "A blob storage container path to hold the scan results (e.g. https://myStorage.blob.core.windows.net/VaScans/)."
-              },
-              "recurringScans": {
-                "$ref": "#/definitions/VulnerabilityAssessmentRecurringScansProperties",
-                "description": "The recurring scans settings"
-              }
-            },
-            "required": ["storageContainerPath"]
-          },
-          "VulnerabilityAssessmentRecurringScansProperties": {
-            "description": "Properties of a Vulnerability Assessment recurring scans.",
-            "additionalProperties": false,
-            "type": "object",
-            "properties": {
-              "emails": {
-                "type": "array",
-                "items": { "type": "string" },
-                "description": "Specifies an array of e-mail addresses to which the scan notification is sent."
-              },
-              "emailSubscriptionAdmins": {
-                "type": "boolean",
-                "description": "Specifies that the schedule scan notification will be is sent to the subscription administrators. Default value: true."
-              },
-              "isEnabled": {
-                "type": "boolean",
-                "description": "Recurring scans state."
-              }
-            }
-          },
-          "ServerVulnerabilityAssessmentListResult": {
-            "additionalProperties": {
-              "$ref": "#/definitions/ServerVulnerabilityAssessment"
-            },
-            "type": "object",
-            "properties": {
-              "length": { "type": "number" },
-              "nextLink": {
-                "type": "string",
-                "description": "Link to retrieve next page of results.\n**NOTE: This property will not be serialized. It can only be populated by the server.**"
-              }
-            },
-            "required": ["length"]
-          }
-        }
-      },
-      "method": "list",
-      "service": "sql",
-      "displayName": "Server Vulnerability  Assessments /listByServer",
-      "linkedService": "sql",
-      "active": true,
-      "resourceType": "servers",
-      "linkedResourceType": "serverVulnerabilityAssessments",
-      "output": {
-        "required": [
-          "$schema",
-          "definitions.ServerVulnerabilityAssessmentListResult.type",
-          "definitions.ServerVulnerabilityAssessmentListResult.properties.length.type",
-          "definitions.ServerVulnerabilityAssessmentListResult.properties.nextLink.type",
-          "definitions.ServerVulnerabilityAssessmentListResult.properties.nextLink.description",
-          "definitions.ServerVulnerabilityAssessmentListResult.additionalProperties.$ref",
-          "definitions.ServerVulnerabilityAssessmentListResult.required",
-          "definitions.ServerVulnerabilityAssessment.type",
-          "definitions.ServerVulnerabilityAssessment.properties.id.type",
-          "definitions.ServerVulnerabilityAssessment.properties.id.description",
-          "definitions.ServerVulnerabilityAssessment.properties.name.type",
-          "definitions.ServerVulnerabilityAssessment.properties.name.description",
-          "definitions.ServerVulnerabilityAssessment.properties.type.type",
-          "definitions.ServerVulnerabilityAssessment.properties.type.description",
-          "definitions.ServerVulnerabilityAssessment.properties.storageContainerPath.type",
-          "definitions.ServerVulnerabilityAssessment.properties.storageContainerPath.description",
-          "definitions.ServerVulnerabilityAssessment.properties.storageContainerSasKey.type",
-          "definitions.ServerVulnerabilityAssessment.properties.storageContainerSasKey.description",
-          "definitions.ServerVulnerabilityAssessment.properties.storageAccountAccessKey.type",
-          "definitions.ServerVulnerabilityAssessment.properties.storageAccountAccessKey.description",
-          "definitions.ServerVulnerabilityAssessment.properties.recurringScans.$ref",
-          "definitions.ServerVulnerabilityAssessment.properties.recurringScans.description",
-          "definitions.ServerVulnerabilityAssessment.required",
-          "definitions.ServerVulnerabilityAssessment.additionalProperties",
-          "definitions.ServerVulnerabilityAssessment.description",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.type",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.properties.isEnabled.type",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.properties.isEnabled.description",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.properties.emailSubscriptionAdmins.type",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.properties.emailSubscriptionAdmins.description",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.properties.emails.type",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.properties.emails.items.type",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.properties.emails.description",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.additionalProperties",
-          "definitions.VulnerabilityAssessmentRecurringScansProperties.description"
-        ],
-        "optional": []
-      },
-      "rowType": "ADDON",
-      "params": { "serverName": "obj.name" },
-      "updatedAt": "2021-08-18T10:31:51.516Z",
-      "_id": "f7b3c494",
-      "input": {
-        "required": ["resourceGroupName", "serverName"],
-        "optional": []
-      },
-      "operationType": "DISCOVER",
-      "displayService": "sql",
-      "addonCount": 5,
-      "relationCount": 13,
-      "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
-        {
-          "id": "1231",
-          "cloudProvider": "AWS",
-          "method": "describeIns",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "RELATION",
-          "diff": "+3 -10"
-        }
-      ],
-      "diffCount": "+338 -193"
-    },
-    {
-      "relations": [],
-      "aliases": {},
-      "isDependent": true,
-      "properties": {},
-      "cloudProvider": "AWS",
-      "outputSchema": { "type": "structure", "members": { "type": "string" } },
-      "method": "deleteUser",
-      "displayName": "Delete User",
-      "active": true,
-      "rowType": "API",
-      "params": { "UserName": "required", "AuthenticationType": "required" },
-      "_id": "cdd42bdb",
-      "input": {
-        "required": ["UserName", "AuthenticationType"],
-        "optional": []
-      },
-      "areValidParams": true,
-      "isAction": true,
-      "isRoot": false,
-      "suppressErrors": [],
-      "createdAt": "2021-07-29T07:53:56.252Z",
-      "inputSchema": {
-        "type": "structure",
-        "required": ["UserName", "AuthenticationType"],
-        "members": {
-          "UserName": { "type": "string", "sensitive": true },
-          "AuthenticationType": { "type": "string" }
-        }
-      },
-      "historyKeys": [],
-      "service": "AppStream",
-      "resourceType": "APPSTREAM_USER",
-      "output": { "required": [], "optional": [] },
-      "updatedAt": "2021-07-29T07:54:36.900Z",
-      "normalisations": [],
-      "operationType": "DELETE",
-      "displayService": "AppStream",
-      "addonCount": 10,
-      "relationCount": 16,
-      "addonsAndRelations": [
-        {
-          "id": "1229",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceAttributes",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_ATTRIBUTES",
-          "type": "ADDON",
-          "diff": "+204 -30"
-        },
-        {
-          "id": "1230",
-          "cloudProvider": "AWS",
-          "method": "describeInstanceType",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "ADDON",
-          "diff": "-"
-        },
-        {
-          "id": "1231",
-          "cloudProvider": "AWS",
-          "method": "describeIns",
-          "service": "EC2",
-          "resourceType": "EC2_INSTANCE_TYPE",
-          "type": "RELATION",
-          "diff": "+3 -10"
-        }
-      ],
-      "diffCount": "+56 -191"
     }
   ]
 }
