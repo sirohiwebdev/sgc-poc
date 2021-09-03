@@ -214,6 +214,7 @@
       "diffCount": "+488 -135"
     },
     {
+      "id": 4,
       "relations": [],
       "aliases": {},
       "properties": {},
@@ -272,7 +273,7 @@
       "diffCount": "+386 -177"
     },
     {
-      "id": 4,
+      "id": 5,
       "properties": { "client": "ManagementLockClient" },
       "cloudProvider": "AZURE",
       "inputSchema": {
