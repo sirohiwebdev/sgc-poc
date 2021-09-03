@@ -1,8 +1,7 @@
 {
   "apis": [
     {
-      "isAction": true,
-      "isRoot": false,
+      "id": 1,
       "properties": { "client": "StorageManagementClient" },
       "cloudProvider": "AZURE",
       "inputSchema": {
@@ -71,8 +70,7 @@
       "diffCount": "+283 -107"
     },
     {
-      "isAction": true,
-      "isRoot": false,
+      "id": 2,
       "properties": { "client": "ComputeManagementClient" },
       "cloudProvider": "AZURE",
       "inputSchema": {
@@ -154,8 +152,7 @@
       "diffCount": "+500 -165"
     },
     {
-      "isAction": true,
-      "isRoot": false,
+      "id": 3,
       "properties": { "client": "StorSimple8000SeriesManagementClient" },
       "cloudProvider": "AZURE",
       "inputSchema": {
@@ -275,7 +272,7 @@
       "diffCount": "+386 -177"
     },
     {
-      "isAction": false,
+      "id": 4
       "properties": { "client": "ManagementLockClient" },
       "cloudProvider": "AZURE",
       "inputSchema": {
